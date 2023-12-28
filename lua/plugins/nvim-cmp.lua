@@ -35,6 +35,8 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "hrsh7th/cmp-emoji",
+    "chrisgrieser/cmp-nerdfont",
 
     "rafamadriz/friendly-snippets",
   },
@@ -96,6 +98,8 @@ return {
             nvim_lsp = "[LSP]",
             luasnip = "[LuaSnip]",
             path = "[Path]",
+            emoji = "[Emoji]",
+            nerdfont = "[NerdFont]",
           })[entry.source.name]
           return vim_item
         end,
@@ -106,6 +110,8 @@ return {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "emoji" },
+        { name = "nerdfont" },
       },
     })
   end,
