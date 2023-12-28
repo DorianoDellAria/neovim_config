@@ -28,11 +28,10 @@ map("v", ">", ">gv", { silent = true })
 map("v", "<", "<gv", { silent = true })
 
 -- Clipboard
-map({ "n", "v", "x" }, "<leader>y", "\"+y", { silent = true, desc = "yank into the system clipboard" })
+map({ "n", "v", "x" }, "<leader>y", '"+y', { silent = true, desc = "yank into the system clipboard" })
 -- map("n", "<leader>y", "\"+yy", { silent = true })
 
-map({ "n", "v", "x" }, "<leader>d", "\"+d", { silent = true, desc = "delete into the system clipboard" })
+map({ "n", "v", "x" }, "<leader>d", '"+d', { silent = true, desc = "delete into the system clipboard" })
 -- map("n", "<leader>d", "\"+dd", { silent = true })
 
-map("n", "<leader>p", "\"+p", { silent = true, desc = "paste from the system clipboard" })
-
+map("n", "<leader>p", '"+p', { silent = true, desc = "paste from the system clipboard" })
