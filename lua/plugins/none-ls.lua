@@ -5,5 +5,5 @@ return {
       require("null-ls").builtins.formatting.stylua,
     },
   },
-  priority = 51,
+  priority = 100,
 }
