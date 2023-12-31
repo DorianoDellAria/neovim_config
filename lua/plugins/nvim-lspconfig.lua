@@ -60,19 +60,19 @@ return {
     end
 
     local servers = {
-      -- clangd = {},
-      -- gopls = {},
-      -- pyright = {},
-      -- rust_analyzer = {},
-      -- tsserver = {},
-      -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+      docker_compose_language_service = {},
+      dockerls = {},
+      jsonls = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
           telemetry = { enable = false },
         },
       },
+      pyright = {},
+      ruff_lsp = {},
+      rust_analyzer = {},
+      tsserver = {},
     }
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
