@@ -22,6 +22,7 @@ return {
           "vimdoc",
           "vim",
           "bash",
+          "yaml",
         },
 
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
