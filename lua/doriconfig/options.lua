@@ -48,14 +48,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
-local indent_group = vim.api.nvim_create_augroup("setIndent", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
-  group = indent_group,
-  pattern = { "yaml" },
-  callback = function ()
-    vim.defer_fn(function()
-      o.expandtab = true
-    end, 0)
-  end,
-})
-
