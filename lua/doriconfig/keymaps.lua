@@ -14,7 +14,7 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic mes
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 
 -- Move lines
-map("n", "<A-j>", "<Esc>:m .+1<CR>", { silent = true, desc = "hey salut" })
+map("n", "<A-j>", "<Esc>:m .+1<CR>", { silent = true })
 map("n", "<A-k>", "<Esc>:m .-2<CR>", { silent = true })
 
 map("v", "<A-j>", ":m .+1<CR>==", { silent = true })
