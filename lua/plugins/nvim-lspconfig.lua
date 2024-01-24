@@ -60,6 +60,8 @@ return {
     end
 
     local servers = {
+      astro = {},
+      cssls = {},
       docker_compose_language_service = {},
       dockerls = {},
       jsonls = {},
@@ -72,6 +74,7 @@ return {
       pyright = {},
       ruff_lsp = {},
       rust_analyzer = {},
+      tailwindcss = {},
       tsserver = {},
     }
 
