@@ -57,6 +57,7 @@ return {
         vim.lsp.buf.format()
       end, { desc = "Format current buffer with LSP" })
       nmap("<leader>i", vim.lsp.buf.format, "Format current buffer")
+      nmap("<leader>l", vim.diagnostic.open_float, "Show diagnostic")
     end
 
     local servers = {
@@ -98,6 +99,10 @@ return {
           filetypes = (servers[server_name] or {}).filetypes,
         })
       end,
+    });
+
+    vim.diagnostic.config({
+      virtual_text = false,
     })
   end,
 }
