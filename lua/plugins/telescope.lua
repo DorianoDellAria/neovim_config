@@ -13,23 +13,22 @@ return {
     },
     "nvim-telescope/telescope-ui-select.nvim",
   },
-  opts = {
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-u>"] = false,
-          ["<C-d>"] = false,
+  config = function()
+    require("telescope").setup({
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-u>"] = false,
+            ["<C-d>"] = false,
+          },
         },
       },
-    },
-    extensions = {
-      ["ui-select"] = {
-        require("telescope.themes").get_dropdown({}),
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown({}),
+        },
       },
-    },
-  },
-  config = function(_, opts)
-    require("telescope").setup(opts)
+    })
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
 
