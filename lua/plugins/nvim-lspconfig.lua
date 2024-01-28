@@ -1,17 +1,27 @@
+local function check_npm()
+  return vim.fn.executable("npm") == 1
+end
 -- LSP
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+    { "williamboman/mason.nvim",           cond = check_npm },
+    { "williamboman/mason-lspconfig.nvim", cond = check_npm },
+    { "j-hui/fidget.nvim",                 tag = "legacy",  opts = {} },
     "folke/neodev.nvim",
   },
   config = function()
     -- mason-lspconfig requires that these setup functions are called in this order
     -- before setting up the servers.
-    require("mason").setup()
-    require("mason-lspconfig").setup()
+    local mason_status, mason = pcall(require, "mason")
+    if mason_status then
+      mason.setup()
+    end
+    local mason_lsp_status, mason_lspconfig = pcall(require, "mason-lspconfig")
+    if mason_lsp_status then
+      mason_lspconfig.setup()
+    end
+
     -- Setup neovim lua configuration
     require("neodev").setup()
 
@@ -84,22 +94,23 @@ return {
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
     -- Ensure the servers above are installed
-    local mason_lspconfig = require("mason-lspconfig")
 
-    mason_lspconfig.setup({
-      ensure_installed = vim.tbl_keys(servers),
-    })
+    if mason_lsp_status then
+      mason_lspconfig.setup({
+        ensure_installed = vim.tbl_keys(servers),
+      })
 
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        require("lspconfig")[server_name].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-        })
-      end,
-    });
+      mason_lspconfig.setup_handlers({
+        function(server_name)
+          require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+          })
+        end,
+      })
+    end
 
     vim.diagnostic.config({
       virtual_text = false,
