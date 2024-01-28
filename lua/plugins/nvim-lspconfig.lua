@@ -71,6 +71,7 @@ return {
     end
 
     local servers = {
+      -- actionlint = {},
       astro = {},
       cssls = {},
       docker_compose_language_service = {},
@@ -82,9 +83,11 @@ return {
           telemetry = { enable = false },
         },
       },
+      -- mdx_analyser = {},
       pyright = {},
       ruff_lsp = {},
       rust_analyzer = {},
+      -- stylua = {},
       tailwindcss = {},
       tsserver = {},
     }
