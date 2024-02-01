@@ -11,6 +11,8 @@ return {
         ":Gitsigns toggle_current_line_blame<cr>",
         { desc = "[G]it [T]oggle current line blame" }
       )
+      vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<cr>", { desc = "Previous [H]unk" })
+      vim.keymap.set("n", "]h", ":Gitsigns next_hunk<cr>", { desc = "Next [H]unk" })
     end,
   },
   {
