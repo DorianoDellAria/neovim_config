@@ -19,6 +19,7 @@ return {
           "rust",
           "tsx",
           "javascript",
+          "smithy",
           "typescript",
           "vimdoc",
           "vim",
