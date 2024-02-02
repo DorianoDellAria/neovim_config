@@ -13,6 +13,7 @@ return {
       )
       vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<cr>", { desc = "Previous [H]unk" })
       vim.keymap.set("n", "]h", ":Gitsigns next_hunk<cr>", { desc = "Next [H]unk" })
+      vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", { desc = "[R]eset hunk" })
     end,
   },
   {
