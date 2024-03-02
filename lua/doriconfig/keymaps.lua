@@ -35,3 +35,21 @@ map({ "n", "v", "x" }, "<leader>d", '"+d', { silent = true, desc = "delete into 
 -- map("n", "<leader>d", "\"+dd", { silent = true })
 
 map("n", "<leader>p", '"+p', { silent = true, desc = "paste from the system clipboard" })
+
+local function cnoreab(lhs, rhs)
+    local command = 'cnoreabbrev %s %s'
+
+    vim.cmd(command:format(lhs, rhs))
+end
+
+cnoreab('W', 'w')
+
+cnoreab('Q', 'q')
+
+cnoreab('Wq', 'wq')
+cnoreab('wQ', 'wq')
+cnoreab('WQ', 'wq')
+
+cnoreab('Wa', 'wa')
+cnoreab('wA', 'wa')
+cnoreab('WA', 'wa')
