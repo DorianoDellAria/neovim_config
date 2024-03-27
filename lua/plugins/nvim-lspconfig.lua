@@ -85,7 +85,6 @@ return {
       },
       -- mdx_analyser = {},
       pyright = {},
-      ruff_lsp = {},
       rust_analyzer = {},
       -- stylua = {},
       tailwindcss = {},
