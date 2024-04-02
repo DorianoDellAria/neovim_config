@@ -10,6 +10,7 @@ return {
       ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
       ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
       ["<leader>o"] = { name = "[O]pen", _ = "which_key_ignore" },
+      ["<leader>v"] = { name = "[V]env", _ = "which_key_ignore" },
     })
   end,
 }
