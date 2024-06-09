@@ -98,8 +98,8 @@ return {
             nvim_lsp = "[LSP]",
             luasnip = "[LuaSnip]",
             path = "[Path]",
-            emoji = "[Emoji]",
-            nerdfont = "[NerdFont]",
+            -- emoji = "[Emoji]",
+            -- nerdfont = "[NerdFont]",
           })[entry.source.name]
           return vim_item
         end,
@@ -110,8 +110,8 @@ return {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = "emoji" },
-        { name = "nerdfont" },
+        -- { name = "emoji" },
+        -- { name = "nerdfont" },
       },
     })
   end,
