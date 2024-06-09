@@ -1,5 +1,6 @@
 return {
   "linux-cultist/venv-selector.nvim",
+  branch = "regexp",
   dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
   config = function()
     local git_root = require("doriconfig.utils").find_git_root()
