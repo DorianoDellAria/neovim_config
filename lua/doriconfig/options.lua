@@ -55,17 +55,3 @@ vim.filetype.add({
 
 vim.treesitter.language.register("markdown", "mdx")
 
-
-vim.api.nvim_create_autocmd('VimEnter', {
-  desc = 'Auto select virtualenv Nvim open',
-  pattern = '*',
-  callback = function()
-    local venv = vim.fn.findfile('pyproject.toml', vim.fn.getcwd() .. ';')
-    local status_ok, venv_selector = pcall(require, "venv-selector");
-    if venv ~= '' and status_ok then
-      venv_selector.retrieve_from_cache()
-    end
-  end,
-  once = true,
-})
-
