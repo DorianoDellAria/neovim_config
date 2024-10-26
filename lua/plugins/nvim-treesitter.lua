@@ -14,6 +14,7 @@ return {
           "c",
           "cpp",
           "go",
+          "html",
           "lua",
           "markdown",
           "python",
@@ -30,9 +31,6 @@ return {
 
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
         auto_install = false,
-        autotag = {
-          enable = true,
-        },
 
         highlight = { enable = true },
         indent = { enable = true },
@@ -93,6 +91,7 @@ return {
         modules = {},
         ignore_install = {},
       })
+      require("nvim-ts-autotag").setup({})
     end, 0)
   end,
 }
