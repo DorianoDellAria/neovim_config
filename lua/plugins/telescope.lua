@@ -12,8 +12,10 @@ return {
       end,
     },
     "nvim-telescope/telescope-ui-select.nvim",
+    "nvim-telescope/telescope-live-grep-args.nvim",
   },
   config = function()
+    local lga_actions = require("telescope-live-grep-args.actions")
     require("telescope").setup({
       defaults = {
         mappings = {
@@ -27,10 +29,23 @@ return {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
         },
+        live_grep_args = {
+          auto_quoting = false, -- enable/disable auto-quoting
+          -- define mappings, e.g.
+          mappings = {    -- extend mappings
+            i = {
+              ["<C-k>"] = lga_actions.quote_prompt(),
+              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              -- freeze the current list and start a fuzzy search in the frozen list
+              -- ["<C-space>"] = actions.to_fuzzy_refine,
+            },
+          },
+        },
       },
     })
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
+    pcall(require("telescope").load_extension, "live_grep_args")
 
     local find_git_root = require("doriconfig.utils").find_git_root
 
@@ -38,7 +53,7 @@ return {
     local function live_grep_git_root()
       local git_root = find_git_root()
       if git_root then
-        require("telescope.builtin").live_grep({
+        require("telescope").extensions.live_grep_args.live_grep_args({
           cwd = git_root,
         })
       end
