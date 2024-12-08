@@ -11,6 +11,8 @@ return {
       {"<leader>w", group = "[W]orkspace"},
       {"<leader>o", group = "[O]pen"},
       {"<leader>v", group = "[V]env"},
+      {"<leader>b", group = "[B]uffer"},
+      {"<leader>u", group = " Notification"},
     })
   end,
 }
