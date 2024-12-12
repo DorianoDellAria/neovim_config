@@ -11,7 +11,7 @@ return {
     },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
-    words = { enabled = true },
+    words = { enabled = false },
     dashboard = { enabled = true },
     styles = {
       notification = {
