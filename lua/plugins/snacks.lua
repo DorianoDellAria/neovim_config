@@ -15,9 +15,15 @@ return {
     dashboard = { enabled = true },
     styles = {
       notification = {
+        ---@diagnostic disable-next-line: missing-fields
         wo = { wrap = true },
+        relative = "editor",
       },
     },
+    indent = { enabled = false },
+    input = { enabled = false },
+    scope = { enabled = false },
+    scroll = { enabled = false },
   },
   keys = {
     {

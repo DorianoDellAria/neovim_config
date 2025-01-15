@@ -85,7 +85,24 @@ return {
         },
       },
       -- mdx_analyser = {},
-      pyright = {},
+      pyright = {
+        -- pyright = {
+        --   disableOrganizeImports = true
+        -- },
+        -- python = {
+        --   analysis = {
+        --     ignore = { "*" }
+        --   }
+        -- }
+      },
+      ruff = {
+        -- trace = "messages",
+        -- init_options = {
+        --   settings = {
+        --     logLevel = "debug"
+        --   }
+        -- }
+      },
       rust_analyzer = {},
       -- stylua = {},
       tailwindcss = {},
@@ -117,6 +134,11 @@ return {
 
     vim.diagnostic.config({
       virtual_text = false,
+      float = {
+        source = true,
+        prefix = "● "
+      },
+      severity_sort = true,
     })
   end,
 }

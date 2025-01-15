@@ -34,7 +34,7 @@ o.splitbelow = true
 o.splitright = true
 
 -- Set scrolloff
-o.scrolloff = 8
+o.scrolloff = 4
 
 o.swapfile = false
 
