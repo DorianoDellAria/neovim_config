@@ -103,7 +103,11 @@ return {
         --   }
         -- }
       },
-      rust_analyzer = {},
+      rust_analyzer = {
+        cargo = {
+          allFeatures = true,
+        },
+      },
       -- stylua = {},
       tailwindcss = {},
       ts_ls = {},

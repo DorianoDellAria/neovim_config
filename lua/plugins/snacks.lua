@@ -22,7 +22,7 @@ return {
     },
     indent = { enabled = false },
     input = { enabled = false },
-    scope = { enabled = false },
+    scope = { enabled = true },
     scroll = { enabled = false },
   },
   keys = {
