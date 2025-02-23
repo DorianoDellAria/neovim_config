@@ -24,6 +24,7 @@ return {
     input = { enabled = false },
     scope = { enabled = true },
     scroll = { enabled = false },
+    image = { enabled = true },
   },
   keys = {
     {
