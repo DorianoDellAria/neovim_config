@@ -1,6 +1,7 @@
 -- Plugin that show pending keybinds
 return {
   "folke/which-key.nvim",
+  dependencies = { "echasnovski/mini.icons" },
   config = function()
     -- document existing key chains
     require("which-key").add({
