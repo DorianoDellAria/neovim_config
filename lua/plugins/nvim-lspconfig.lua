@@ -70,22 +70,39 @@ return {
       nmap("<leader>l", vim.diagnostic.open_float, "Show diagnostic")
     end
 
-    local servers = {
-      -- actionlint = {},
-      astro = {},
-      cssls = {},
-      docker_compose_language_service = {},
-      dockerls = {},
-      gopls = {},
-      jsonls = {},
-      lua_ls = {
+    -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- Configure individual servers
+    vim.lsp.config("astro", {})
+
+    vim.lsp.config("cssls", {})
+
+    vim.lsp.config("docker_compose_language_service", {})
+
+    vim.lsp.config("dockerls", {})
+
+    vim.lsp.config("gopls", {})
+
+    vim.lsp.config("jsonls", {})
+
+    vim.lsp.config("lua_ls", {
+      settings = {
         Lua = {
           workspace = { checkThirdParty = false },
           telemetry = { enable = false },
         },
       },
-      -- mdx_analyser = {},
-      pyright = {
+    })
+
+    vim.lsp.config("pyright", {
+      settings = {
         -- pyright = {
         --   disableOrganizeImports = true
         -- },
@@ -95,44 +112,48 @@ return {
         --   }
         -- }
       },
-      ruff = {
-        -- trace = "messages",
-        -- init_options = {
-        --   settings = {
-        --     logLevel = "debug"
-        --   }
-        -- }
-      },
-      rust_analyzer = {
+    })
+
+    vim.lsp.config("ruff", {
+      -- trace = "messages",
+      -- init_options = {
+      --   settings = {
+      --     logLevel = "debug"
+      --   }
+      -- }
+    })
+
+    vim.lsp.config("rust_analyzer", {
+      settings = {
         cargo = {
           allFeatures = true,
         },
       },
-      -- stylua = {},
-      tailwindcss = {},
-      ts_ls = {},
-    }
+    })
 
-    -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+    vim.lsp.config("tailwindcss", {})
+
+    vim.lsp.config("ts_ls", {})
+
 
     -- Ensure the servers above are installed
-
     if mason_lsp_status then
       mason_lspconfig.setup({
-        ensure_installed = vim.tbl_keys(servers),
-      })
-
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          })
-        end,
+        ensure_installed = {
+          "astro",
+          "cssls",
+          "docker_compose_language_service",
+          "dockerls",
+          "gopls",
+          "jsonls",
+          "lua_ls",
+          "pyright",
+          "ruff",
+          "rust_analyzer",
+          "tailwindcss",
+          "ts_ls",
+        },
+        automatic_enable = true, -- New v2 setting (default: true)
       })
     end
 
