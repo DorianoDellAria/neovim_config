@@ -36,6 +36,9 @@ map({ "n", "v", "x" }, "<leader>d", '"+d', { silent = true, desc = "delete into 
 
 map("n", "<leader>p", '"+p', { silent = true, desc = "paste from the system clipboard" })
 
+map("i", "jj", "<esc>", { silent = true })
+map("i", "jk", "<esc>", { silent = true })
+
 local function cnoreab(lhs, rhs)
     local command = 'cnoreabbrev %s %s'
 
