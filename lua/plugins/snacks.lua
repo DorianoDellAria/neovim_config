@@ -20,7 +20,7 @@ return {
         relative = "editor",
       },
     },
-    indent = { enabled = false },
+    indent = { enabled = true },
     input = { enabled = false },
     scope = { enabled = true },
     scroll = { enabled = false },
