@@ -3,7 +3,7 @@ local function map(mode, key, action, opts)
 end
 
 -- No highlight
-map("n", "<leader>,", ":noh<CR>", { silent = true })
+-- map("n", "<leader>,", ":noh<CR>", { silent = true })
 
 -- Dealing with wordwrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { silent = true, expr = true })
