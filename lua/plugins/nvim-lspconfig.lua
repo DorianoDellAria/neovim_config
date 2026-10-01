@@ -43,12 +43,12 @@ return {
       nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
       nmap("g.", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-      nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-      nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-      nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-      nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-      nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-      nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+      nmap("gd", function() Snacks.picker.lsp_definitions() end, "[G]oto [D]efinition")
+      nmap("gr", function() Snacks.picker.lsp_references() end, "[G]oto [R]eferences")
+      nmap("gI", function() Snacks.picker.lsp_implementations() end, "[G]oto [I]mplementation")
+      nmap("gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
+      nmap("<leader>ss", function() Snacks.picker.lsp_symbols() end, "[S]earch document [S]ymbols")
+      nmap("<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "[S]earch workspace [S]ymbols")
 
       -- See `:help K` for why this keymap
       nmap("K", vim.lsp.buf.hover, "Hover Documentation")
