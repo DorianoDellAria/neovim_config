@@ -51,7 +51,14 @@ return {
       nmap("<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, "[S]earch workspace [S]ymbols")
 
       -- See `:help K` for why this keymap
-      nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+      nmap("K", function()
+        local diags = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
+        if #diags > 0 then
+          vim.diagnostic.open_float()
+        else
+          vim.lsp.buf.hover()
+        end
+      end, "Diagnostic or Hover Documentation")
       nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
 
       -- Lesser used LSP functionality
@@ -67,7 +74,6 @@ return {
         vim.lsp.buf.format()
       end, { desc = "Format current buffer with LSP" })
       nmap("<C-S-i>", vim.lsp.buf.format, "Format current buffer")
-      nmap("<leader>l", vim.diagnostic.open_float, "Show diagnostic")
     end
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
