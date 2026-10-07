@@ -39,6 +39,8 @@ map({ "n", "v", "x" }, "<leader>p", '"+p', { silent = true, desc = "paste from t
 map("i", "jj", "<esc>", { silent = true })
 map("i", "jk", "<esc>", { silent = true })
 
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear search highlight" })
+
 local function cnoreab(lhs, rhs)
     local command = 'cnoreabbrev %s %s'
 
