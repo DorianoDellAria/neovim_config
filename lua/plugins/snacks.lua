@@ -26,8 +26,16 @@ return {
 		scroll = { enabled = false },
 		image = { enabled = true },
 		picker = { enabled = true },
+		zen = { enabled = true },
 	},
 	keys = {
+		{
+			"<leader>z",
+			function()
+				Snacks.zen()
+			end,
+			desc = "Toggle Zen Mode",
+		},
 		{
 			"<leader>bd",
 			function()
@@ -115,9 +123,9 @@ return {
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.smart()
+				Snacks.picker.files()
 			end,
-			desc = "Smart Find Files",
+			desc = "Find Files",
 		},
 		{
 			"<leader>,",
@@ -153,6 +161,13 @@ return {
 				Snacks.explorer()
 			end,
 			desc = "File Explorer",
+		},
+		{
+			"<leader>sk",
+			function()
+				Snacks.picker.keymaps()
+			end,
+			desc = "Keymaps",
 		},
 	},
 }

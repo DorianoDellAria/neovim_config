@@ -20,6 +20,7 @@ return {
           "html",
           "lua",
           "markdown",
+          "markdown_inline",
           "python",
           "rust",
           "tsx",

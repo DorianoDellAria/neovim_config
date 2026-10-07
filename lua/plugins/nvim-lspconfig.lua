@@ -43,7 +43,50 @@ return {
       nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
       nmap("g.", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-      nmap("gd", function() Snacks.picker.lsp_definitions() end, "[G]oto [D]efinition")
+      -- On a reference: go to definition. On a definition: show references.
+      nmap("gd", function()
+        local win = vim.api.nvim_get_current_win()
+        local cursor = vim.api.nvim_win_get_cursor(win)
+        local line, col = cursor[1] - 1, cursor[2]
+        local cur_uri = vim.uri_from_bufnr(bufnr)
+        local clients = vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/definition" })
+        local client = clients[1]
+        if not client then
+          return Snacks.picker.lsp_definitions()
+        end
+        local params = vim.lsp.util.make_position_params(win, client.offset_encoding)
+
+        vim.lsp.buf_request_all(bufnr, "textDocument/definition", params, function(results)
+          local on_definition = false
+          for _, res in pairs(results) do
+            local locs = res.result
+            if locs then
+              if locs.uri or locs.targetUri then
+                locs = { locs }
+              end
+              for _, loc in ipairs(locs) do
+                local uri = loc.targetUri or loc.uri
+                local range = loc.targetSelectionRange or loc.range
+                if
+                  uri == cur_uri
+                  and range
+                  and range.start.line <= line
+                  and range["end"].line >= line
+                  and (range.start.line < line or range.start.character <= col)
+                  and (range["end"].line > line or range["end"].character >= col)
+                then
+                  on_definition = true
+                end
+              end
+            end
+          end
+          if on_definition then
+            Snacks.picker.lsp_references()
+          else
+            Snacks.picker.lsp_definitions()
+          end
+        end)
+      end, "[G]oto [D]efinition (or references if on definition)")
       nmap("gr", function() Snacks.picker.lsp_references() end, "[G]oto [R]eferences")
       nmap("gI", function() Snacks.picker.lsp_implementations() end, "[G]oto [I]mplementation")
       nmap("gy", function() Snacks.picker.lsp_type_definitions() end, "Goto T[y]pe Definition")
