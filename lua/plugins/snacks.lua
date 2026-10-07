@@ -142,6 +142,13 @@ return {
 			desc = "Grep",
 		},
 		{
+			"<leader>?",
+			function()
+				Snacks.picker.lines()
+			end,
+			desc = "Search lines in buffer",
+		},
+		{
 			"<leader>:",
 			function()
 				Snacks.picker.command_history()
@@ -168,6 +175,27 @@ return {
 				Snacks.picker.keymaps()
 			end,
 			desc = "Keymaps",
+		},
+		{
+			"<leader>sc",
+			function()
+				Snacks.picker.commands()
+			end,
+			desc = "Commands",
+		},
+		{
+			"<leader>sp",
+			function()
+				Snacks.picker.pickers()
+			end,
+			desc = "Pickers",
+		},
+		{
+			"<leader>sh",
+			function()
+				Snacks.picker.help()
+			end,
+			desc = "Help",
 		},
 	},
 }
