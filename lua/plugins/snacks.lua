@@ -25,7 +25,17 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		image = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			win = {
+				input = {
+					keys = {
+						["<c-e>"] = { "toggle_hidden", mode = { "i", "n" } },
+						["<c-x>"] = { "toggle_ignored", mode = { "i", "n" } },
+					},
+				},
+			},
+		},
 		zen = { enabled = true },
 	},
 	keys = {
@@ -135,14 +145,14 @@ return {
 			desc = "Buffers",
 		},
 		{
-			"<leader>/",
+			"<leader>?",
 			function()
 				Snacks.picker.grep()
 			end,
 			desc = "Grep",
 		},
 		{
-			"<leader>?",
+			"<leader>/",
 			function()
 				Snacks.picker.lines()
 			end,
