@@ -133,7 +133,7 @@ return {
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.files()
+				Snacks.picker.files({ cwd = Snacks.git.get_root() })
 			end,
 			desc = "Find Files",
 		},
@@ -147,7 +147,7 @@ return {
 		{
 			"<leader>?",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({ cwd = Snacks.git.get_root() })
 			end,
 			desc = "Grep",
 		},
