@@ -141,8 +141,6 @@ return {
     })
 
     -- Configure individual servers
-    vim.lsp.config("astro", {})
-
     vim.lsp.config("cssls", {})
 
     vim.lsp.config("docker_compose_language_service", {})
@@ -197,7 +195,7 @@ return {
 
     vim.lsp.config("tailwindcss", {})
 
-    vim.lsp.config("ts_ls", {})
+    vim.lsp.config("tsc", {})
 
     -- Biome: not installed via Mason on purpose. The server uses the project's
     -- node_modules/.bin/biome and only starts when a biome config exists.
@@ -209,7 +207,6 @@ return {
     if mason_lsp_status then
       mason_lspconfig.setup({
         ensure_installed = {
-          "astro",
           "cssls",
           "docker_compose_language_service",
           "dockerls",
@@ -220,9 +217,11 @@ return {
           "ruff",
           "rust_analyzer",
           "tailwindcss",
-          "ts_ls",
+          "tsc",
         },
-        automatic_enable = true, -- New v2 setting (default: true)
+        automatic_enable = {
+          exclude = { "ts_ls", "astro" },
+        },
       })
     end
 
