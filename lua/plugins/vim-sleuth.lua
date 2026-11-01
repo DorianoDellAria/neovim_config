@@ -1,4 +1,4 @@
 return {
-  -- Detect tabstop
-  "tpope/vim-sleuth",
+	-- Detect tabstop
+	"tpope/vim-sleuth",
 }

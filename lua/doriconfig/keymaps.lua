@@ -1,5 +1,5 @@
 local function map(mode, key, action, opts)
-    vim.keymap.set(mode, key, action, opts)
+	vim.keymap.set(mode, key, action, opts)
 end
 
 -- No highlight
@@ -10,8 +10,12 @@ end
 -- map("n", "j", "v:count == 0 ? 'gj' : 'j'", { silent = true, expr = true })
 
 -- Diagnosis
-map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Go to previous diagnostic message" })
-map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Go to next diagnostic message" })
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message" })
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message" })
 
 -- Move lines
 map("n", "<A-j>", "<Esc>:m .+1<CR>", { silent = true })
@@ -42,19 +46,19 @@ map("i", "jk", "<esc>", { silent = true })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear search highlight" })
 
 local function cnoreab(lhs, rhs)
-    local command = 'cnoreabbrev %s %s'
+	local command = "cnoreabbrev %s %s"
 
-    vim.cmd(command:format(lhs, rhs))
+	vim.cmd(command:format(lhs, rhs))
 end
 
-cnoreab('W', 'w')
+cnoreab("W", "w")
 
-cnoreab('Q', 'q')
+cnoreab("Q", "q")
 
-cnoreab('Wq', 'wq')
-cnoreab('wQ', 'wq')
-cnoreab('WQ', 'wq')
+cnoreab("Wq", "wq")
+cnoreab("wQ", "wq")
+cnoreab("WQ", "wq")
 
-cnoreab('Wa', 'wa')
-cnoreab('wA', 'wa')
-cnoreab('WA', 'wa')
+cnoreab("Wa", "wa")
+cnoreab("wA", "wa")
+cnoreab("WA", "wa")
