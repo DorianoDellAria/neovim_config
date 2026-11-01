@@ -112,23 +112,7 @@ return {
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, "[W]orkspace [L]ist Folders")
 
-      -- Create a command `:Format` local to the LSP buffer
-      -- Prefer Biome when it is attached (project-local version and config),
-      -- otherwise fall back to any available formatter.
-      local function format()
-        local has_biome = #vim.lsp.get_clients({ bufnr = bufnr, name = "biome" }) > 0
-        vim.lsp.buf.format({
-          bufnr = bufnr,
-          filter = function(client)
-            if has_biome then
-              return client.name == "biome"
-            end
-            return true
-          end,
-        })
-      end
-      vim.api.nvim_buf_create_user_command(bufnr, "Format", format, { desc = "Format current buffer with LSP" })
-      nmap("<C-S-i>", format, "Format current buffer")
+      -- Formatting (`:Format`, <C-S-i>) is handled by conform.nvim
     end
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
